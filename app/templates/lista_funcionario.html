@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Funcionário</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4 text-primary">Detalhes do Funcionário</h1>
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="card-title">Funcionário: <strong>{{ fun.nome }}</strong></h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>CPF:</strong> {{ fun.cpf }}</li>
+                    <li class="list-group-item"><strong>E-mail:</strong> {{ fun.email }}</li>
+                    <li class="list-group-item"><strong>Remuneração:</strong> R$ {{ fun.remuneracao|floatformat:2 }}</li>
+                </ul>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'editar_funcionario' pk=fun.id %}" class="btn btn-success">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
